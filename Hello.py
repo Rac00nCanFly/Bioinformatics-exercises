@@ -1,1 +1,1 @@
-print("www")
+print("wqq")
