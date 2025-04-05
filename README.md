@@ -1,1 +1,1 @@
-# Basic_toolkit_for_bioinformatics_research
+#Bioinformatics exercises from Basic toolkit for bioinformatics research
