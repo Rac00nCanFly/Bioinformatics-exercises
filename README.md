@@ -25,9 +25,19 @@ Although GUI is very compelling to use, it is simpler and faster to use command 
 + **git push** - it is usually the last command before our file will be send to repository.
 + **git status** - it's a command that shows uncommited changes and if there are some conflicts
 + **git pull** - is used to download changes from repository to local machine
++ **git init** - it creates an empty git repository
++ **git stash** - it puts changes that cause conflicts to temporary stash
++ **git checkout** - it allows to change branch
++ **git merge** - it combines to two branches
++ **git fetch** - it downloads commits and files from remote repository but it doesn't force you to merge with your local repository
++ **git diff** - it shows differences between files
++ **git clone** - it allows to clone remote repository into computer
++ **git config** - shows username that will be used while commiting changes
 
 ### 4. Branches
 ![git-branch](git-branch.jpg)
 
 
-This function is very useful while working on large project it lets us create new branch with some part of the the code without ingering in the main code and when the part is done we can simply merge it with main branch. It is also useful while working in team on the same code so everyone can have separate branch and then can send pull request to merg with main branch
+This function is very useful while working on large project it lets us create new branch with some part of the the code without ingering in the main code and when the part is done we can simply merge it with main branch. It is also useful while working in team on the same code so everyone can have separate branch and then can send pull request to merge with main branch. Below is a graphic representation of how branches can look.
+
+![git-branch](git-branch1.jpeg)
