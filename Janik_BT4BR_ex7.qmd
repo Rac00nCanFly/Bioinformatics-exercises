@@ -1,0 +1,61 @@
+---
+title: "Using of tidyr and dplyr libraries"
+format: 
+  html: 
+    code-tools: true
+    code-overflow: wrap
+    page-layout: full
+    highlight-style: github
+editor: visual
+---
+
+1.  **Loading the "iris" dataset and transforming dataset into long format changing columns connected to trait into one column named Trait and assigned values to each row are stored in Size column.**
+
+    ```{r}
+    #| message: false
+    #| warning: false
+    library(datasets)
+    library(tidyr)
+    library(dplyr)
+    data(iris)
+    iris_longer <- iris %>% 
+      pivot_longer(cols = c(Sepal.Length,Sepal.Width,Petal.Length,Petal.Width), names_to = "Trait", values_to = "Size")
+    View(iris_longer)
+    ```
+
+2.  **Calculating mean length, width of the sepal and petal of each species.**
+
+    ```{r}
+    iris_longer_1 <- iris_longer %>%
+      group_by(Species,Trait) %>%
+      summarise(mean_trait = mean(Size), .groups = "drop")
+    View(iris_longer_1)
+    ```
+
+I've used dplyr library in order to use group_by and summarise functions. Firstly I've ordered data by species and trait and then from this grouped data I took mean from column size.
+
+3.  **Finding the largest and widest, petal and sepal, of virginica and versicolor species.**
+
+    ```{r}
+    iris_longer_2 <- iris_longer %>% 
+      group_by(Species, Trait) %>%
+      filter(Size == max(Size), Species %in% c("virginica","versicolor"))
+    View(iris_longer_2)
+    ```
+
+Firstly I've grouped data (using group_by from dplyr) into species and trait so I could take maximum value of grouped records. Then I've filtered only maximum values (it includes also equal maximum values) and species that was specified in task
+
+4.  **Calculating how many observations are above mean**
+
+    ```{r}
+    iris_longer_3 <- iris_longer %>%
+      group_by(Species,Trait) %>%
+      mutate(mean_trait = mean(Size)) %>%
+      filter(Size > mean_trait) %>%
+      summarise(records_above_mean = n(),.groups = "drop")
+    View(iris_longer_3)
+    ```
+
+Firstly I've grouped records by species and trait to calculate mean and opposing to what I did in iris_longer_1 I didn't use summarise because it would remove remaining columns and I wanted to use column size to filter results above mean. Then I've used summarise to count records above mean.
+
+I've used LLM to check how to count number of records.
