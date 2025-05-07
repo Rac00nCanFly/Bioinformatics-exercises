@@ -1,0 +1,36 @@
+---
+title: "Janik_BT4BR_ex8"
+format:
+  html:
+    embed-resources: true
+editor: visual
+resources:
+  - badplot.png
+---
+
+## Transforming "bad plots" into correct ones
+
+In this exercise I will be transforming plot shown below.
+
+![](badplot.png)
+
+
+```{r}
+library(ggplot2)
+
+year <- c("2020", "2021", "2022 IS", "2022 IIS", "2023 IS", "2023 IIS", "2024 IS", "2024 IIS")
+score <- c(42.2,37.3,36.5,39.2,40.1,41.7,52.9,38.1)
+candidate <- c("Fernandez", "Fernandez", "Fernandez", "Fernandez", "Fernandez", "Fernandez", "Milei", "Milei")
+
+data1 <- data.frame(year,score, candidate)
+#I needed to transform data because ggplot is ordering text data in alphabetical order
+data1$year <- factor(data1$year, levels = c("2020", "2021", "2022 IS", "2022 IIS", "2023 IS", "2023 IIS", "2024 IS", "2024 IIS"))
+
+ggplot(data1, aes(x = year, y = score, fill = candidate)) +
+  geom_col() +
+  scale_fill_manual(values = c("Fernandez" = "red", "Milei" = "blue")) +
+  labs(title = "Scores of candidates", x = "Year", y = "Score") +
+  theme_minimal()+
+  geom_text(aes(label = score), vjust = -0.5, size = 3)
+
+```
