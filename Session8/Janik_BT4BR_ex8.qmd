@@ -5,14 +5,14 @@ format:
     embed-resources: true
 editor: visual
 resources:
-  - badplot.png
+  - Session8/badplot.png
 ---
 
 ## Transforming "bad plots" into correct ones
 
 In this exercise I will be transforming plot shown below.
 
-![](badplot.png)
+![](Session8/badplot.png)
 
 
 ```{r}
